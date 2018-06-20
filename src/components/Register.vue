@@ -36,6 +36,8 @@ export default{
 <style>
 .register-wrapper{
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    flex :1;
+    justify-content: center;
 }
 </style>

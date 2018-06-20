@@ -3,10 +3,8 @@
     <button  v-on:click.prevent="showDropDown=!showDropDown">
       <div>{{selectedLink.name}}</div>
     </button>
-    <div v-if="showDropDown">
-      <ul >
-        <li v-on:click="selectLink(link)"  v-for="link in links" v-bind:key="link.name">{{link.name}}</li>
-      </ul>
+    <div class="ul" v-if="showDropDown">
+        <div class="li" v-on:click="selectLink(link)"  v-for="link in links" v-bind:key="link.name">{{link.name}}</div>
     </div>
   </div>
 </template>
@@ -30,12 +28,23 @@ export default {
     props: ['links'],
 }
 </script>
-<style>
-ul, li{
-    width: 80%;
+<style scoped>
+.dropdown{
+width: 100%;
+display: flex;
+flex-direction: column;
 }
-li{
-    background-color: #bcbccb
+.ul{
+    border: 1px solid #f1f1f1;
+    margin-top: 5px
 }
+.li{
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 </style>
 

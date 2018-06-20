@@ -6,8 +6,11 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+
 }
+
+
 </script>
 
 <style>
@@ -27,10 +30,13 @@ body {
   color: #2c3e50;
   display: flex;
   flex: 1;
+  padding: 10px;
 }
 button{
   height: 40px;
   background: linear-gradient(90deg,#49bb50,#49bb50 31%,#49bb50);
-  width: 80%;
+}
+button:focus{
+  outline: none;
 }
 </style>
