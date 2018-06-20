@@ -34,7 +34,8 @@ body {
 }
 button{
   height: 40px;
-  background: linear-gradient(90deg,#49bb50,#49bb50 31%,#49bb50);
+  /* background: linear-gradient(90deg,#49bb50,#49bb50 31%,#49bb50); */
+  background-color: palegreen;
 }
 button:focus{
   outline: none;
