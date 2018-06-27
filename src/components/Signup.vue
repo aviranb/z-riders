@@ -60,18 +60,29 @@ export default {
   },
   methods: {
     signUp: function() {
-      console.log("ff", this.form);
       config.db
-        .ref("/users-test/")
+        .ref("/users/")
         .child(this.form.id)
         .once("value", snapshot => {
           let exists = snapshot.val() !== null;
-          this.userExistsCallback(this.form.id, exists);
+          exists
+            ? this.userExistsCallback(this.form.id)
+            : this.newUserCallback(this.form.id);
+        })
+        .then(() => {
+          this.$router.push("register");
         });
     },
 
-    userExistsCallback(userId, exists) {
-      exists ? alert(userId + " exists") : alert(userId + " not exist");
+    userExistsCallback(userId) {
+      alert(userId + " exists");
+    },
+
+    newUserCallback(userId) {
+      config.db.ref("/users/" + userId).set({
+        firstName: this.form.firstName,
+        lastName: this.form.lastName
+      });
     },
 
     validateBeforeSubmit() {
@@ -87,59 +98,6 @@ export default {
 </script>
 
 
-<style scoped>
-.container {
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-}
+<style >
 
-form {
-  padding: 20px;
-}
-
-.form-field {
-  display: flex;
-  flex-direction: column;
-
-  height: 90px;
-}
-.form-field .form-label {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 300px;
-}
-
-input {
-  height: 30px;
-  min-width: 125px;
-  border: 1px solid #eee;
-  border-left: 3px solid;
-  border-radius: 5px;
-  transition: border-color 0.5s ease-out;
-}
-
-input.input.danger {
-  border-left-color: salmon;
-}
-
-input.input {
-  border-left-color: #eee;
-}
-
-input:focus {
-  outline: none;
-}
-
-.input-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-.error-message {
-  color: salmon;
-  text-align: left;
-}
 </style>

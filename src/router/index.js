@@ -4,12 +4,12 @@ import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Summary from '@/components/Summary'
 import Signup from '@/components/Signup'
+import AddStation from '@/components/AddStation'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'HelloWorld',
       component: Login
@@ -28,6 +28,11 @@ export default new Router({
       path: '/summary',
       name: 'Summary',
       component: Summary
+    },
+    {
+      path: '/add-station',
+      name: 'AddStation',
+      component: AddStation
     }
   ]
 })
